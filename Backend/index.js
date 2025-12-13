@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const rssRouter = require("./routes/rssfeed");
+const rssRouter = require("./routes/feed.route");
 const PORT = process.env.PORT || 5000;
 const app = express();
 
