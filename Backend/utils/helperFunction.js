@@ -17,6 +17,29 @@ function formatData(data) {
     }
 }
 
+function buildXml(oldArticles) {
+    let newArticles = {
+        rss: {
+            '@_version': '2.0',
+            channel: {
+                item: oldArticles.map(article=>{
+                    return {
+                        title: article.title,
+                        link: article.link,
+                        description: article.details,
+                        pubDate: article.publishDate,
+                        'media:content': {
+                            '@_url': article.media
+                        }
+                    }
+                })
+            }
+        }
+    }
+    return newArticles;
+}
+
 module.exports = {
-    formatData
+    formatData,
+    buildXml
 }
